@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: frontend
+  labels:
+    app: frontend
+spec:
+  replicas: 2  # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: frontend
+  template:
+    metadata:
+      labels:
+        app: frontend
+        api: external
+    spec:
+      containers:
+      - name: frontend
+        image: letienlocvn/udagram-frontend:v6 # Replace with your Docker image
+        imagePullPolicy: Always
+        ports:
+        - containerPort: 8080  # Adjust the port if necessary
+        resources:
+          requests:
+            memory: "64Mi"
+            cpu: "250m"
+          limits:
+            memory: "1024Mi"
+            cpu: "500m"
+        restartPolicy: Always
