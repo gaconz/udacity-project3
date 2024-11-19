@@ -3,24 +3,24 @@ kind: Deployment
 metadata:
   name: frontend
   labels:
-    app: frontend
+    service: frontend
 spec:
-  replicas: 2  # Adjust the number of replicas as needed
+  replicas: 2
   selector:
     matchLabels:
-      app: frontend
+      service: frontend
   template:
     metadata:
       labels:
-        app: frontend
+        service: frontend
         api: external
     spec:
       containers:
       - name: frontend
-        image: letienlocvn/udagram-frontend:v6 # Replace with your Docker image
+        image: letienlocvn/udagram-frontend:v6
         imagePullPolicy: Always
         ports:
-        - containerPort: 8080  # Adjust the port if necessary
+        - containerPort: 80
         resources:
           requests:
             memory: "64Mi"
