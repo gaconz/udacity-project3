@@ -38,7 +38,7 @@ kubectl logs backend-feed-8dd6f44b7-2z4dk
 
 ## Create cluster
 eksctl create cluster --name myCluster --region=us-east-1 --nodes-min=2 --nodes-max=3
-
+eksctl create cluster --name myCluster --region us-east-1 --nodegroup-name myNodes --node-type m5.large --nodes 1 --nodes-min 1 --nodes-max 2
 ## Delete node groups
 eksctl delete nodegroup --cluster=myCluster --name=my-nodes --region=us-east-1
 eksctl delete cluster --name=myCluster --region=us-east-1
