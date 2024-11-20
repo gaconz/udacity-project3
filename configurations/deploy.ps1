@@ -1,3 +1,9 @@
+## Microservice 
+### Create image for each service
+docker-compose -f docker-compose-build.yaml build --parallel
+### Start application
+docker-compose up
+
 # Apply environment variables and secrets
 kubectl apply -f aws-secret.yaml
 kubectl apply -f env-secret.yaml
@@ -42,3 +48,7 @@ eksctl create cluster --name myCluster --region us-east-1 --nodegroup-name myNod
 ## Delete node groups
 eksctl delete nodegroup --cluster=myCluster --name=my-nodes --region=us-east-1
 eksctl delete cluster --name=myCluster --region=us-east-1
+
+## Delete service
+kubectl delete service publicfrontend
+kubectl delete service reverseproxy
